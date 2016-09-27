@@ -13,12 +13,12 @@ boolean panel_2_checked = false;
 int current_panel = 0;
 
 /* Webservices */
-String GOOGLE_KEY = "AIzaSyDUoHwuJd70be6Dtjuh-_9Nd7bqbjIDTz0";
+String GOOGLE_KEY = "";
 
-final String OAUTH_CONSUMER_KEY        = "iVsmTJN6D4bukzWNe4MQQ"; // Twitter consumer key
-final String OAUTH_CONSUMER_SECRET     = "vwRzZdG9HcdSFbFYwGQOlijrDvD9cS2wJokDtBnWipU"; // Twitter secret key
-final String OAUTH_ACCESS_TOKEN        = "1408373994-3Ri2VzYpXuthQMJRap69rQWATpP8VhSZ1Td38K7"; // Twitter access token
-final String OAUTH_ACCESS_TOKEN_SECRET = "eSqXuUPUEkedTGVut4NXYrwkr0QUc77uJhzJXFhJM"; // Twitter secret access token
+final String OAUTH_CONSUMER_KEY        = ""; // Twitter consumer key
+final String OAUTH_CONSUMER_SECRET     = ""; // Twitter secret key
+final String OAUTH_ACCESS_TOKEN        = ""; // Twitter access token
+final String OAUTH_ACCESS_TOKEN_SECRET = ""; // Twitter secret access token
 Twitter twitter;
 User tw_user;
 
@@ -126,16 +126,16 @@ void gui_config(){
   
   /* GUI tabs (switch between panel 1 and 2) */
   gui_control_tabs = new GUIController(this);
-  bt_tab_1 = new IFButton("Basic configuration", 0, 0, 150);
+  bt_tab_1 = new IFButton("Basic configuration", 0, 30, width/2);
   bt_tab_1.addActionListener(this);
   gui_control_tabs.add(bt_tab_1);
-  bt_tab_2 = new IFButton("Advanced configuration", 150, 0, 150);
+  bt_tab_2 = new IFButton("Advanced configuration", width/2, 30, width/2);
   bt_tab_2.addActionListener(this);
   gui_control_tabs.add(bt_tab_2);
   
   /* GUI config : managing config files */
   gui_control_conf = new GUIController(this);
-  bt_config_file = new IFButton("No config file found.", 0, 30, 400);
+  bt_config_file = new IFButton("No config file found.", 0, 0, width);
   gui_control_conf.add(bt_config_file);
   bt_config_file.setLookAndFeel(look_tab_grey);
   

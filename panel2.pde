@@ -6,12 +6,10 @@ IFLabel lb_profile;
 IFTextField tf_environment;
 IFLabel lb_environment;
 IFLabel com_environment;
-String src_environment;
 
 IFTextField tf_tags;
 IFLabel lb_tags;
 IFLabel com_tags;
-String src_tags;
 
 IFLabel lb_measurement;
 IFLabel lb_measurement_notice;
@@ -19,17 +17,14 @@ IFLabel lb_measurement_notice;
 IFTextField tf_device;
 IFLabel lb_device;
 IFLabel com_device;
-String src_device;
 
 IFTextField tf_duration;
 IFLabel lb_duration;
 IFLabel com_duration;
-String src_duration;
 
 IFTextField tf_frequency;
 IFLabel lb_frequency;
 IFLabel com_frequency;
-String src_frequency;
 
 IFButton bt_check_2;
 IFLabel lb_check_2;
@@ -52,14 +47,15 @@ void gui_panel_2_config(){
   gui_control_2.add(lb_environment);
   tf_environment = new IFTextField("tf_environment", 20, 105, 200);
   gui_control_2.add(tf_environment);
-  com_environment = new IFLabel("", 230, 100);
+  com_environment = new IFLabel("Description of the site\n(e.g. floor, walls)", 230, 100);
   gui_control_2.add(com_environment);
   
   lb_tags = new IFLabel("Hashtags", 20, 135);
   gui_control_2.add(lb_tags);
   tf_tags = new IFTextField("tf_tags", 20, 150, 200);
+  tf_tags.setValue("#geiger");
   gui_control_2.add(tf_tags);
-  com_tags = new IFLabel("", 230, 145);
+  com_tags = new IFLabel("Tags that will be attached\nto the tweets.", 230, 145);
   gui_control_2.add(com_tags);
   
   lb_measurement = new IFLabel("Measurement", 10,190, 40);

@@ -55,7 +55,7 @@ void gui_panel_4_config(){
 void gui_panel_4(){
   current_panel = 4;
   gui_control_tabs.setVisible(false);
-  gui_control_conf.setVisible(true);
+  gui_control_conf.setVisible(false);
   gui_control_1.setVisible(false);
   gui_control_2.setVisible(false);
   gui_control_3.setVisible(false);

@@ -5,31 +5,25 @@ IFRadioController rc_type;
 IFRadioButton rc_type1, rc_type2;
 IFLabel lb_type;
 IFLabel com_type;
-String src_type;
 
 IFTextField tf_country;
 IFLabel lb_country;
 IFLabel com_country;
-String src_country;
 
 IFTextField tf_city;
 IFLabel lb_city;
 IFLabel com_city;
-String src_city;
 
 IFTextField tf_address;
 IFLabel lb_address;
 IFLabel com_address;
-String src_address;
 
 IFTextField tf_geolat;
 IFLabel lb_geolat;
-float src_geolat;
 
 IFTextField tf_geolon;
 IFLabel lb_geolon;
 IFLabel com_geo;
-float src_geolon;
 
 IFButton bt_check_1;
 IFLabel lb_check_1;
@@ -200,7 +194,7 @@ void geo_config(){
 }
 
 /**
- * Locate the user API through the ip-api service.
+ * Locate the user's IP through the ip-api service.
  */
 processing.data.JSONObject get_loc2() {
   processing.data.JSONObject loc = new processing.data.JSONObject();
