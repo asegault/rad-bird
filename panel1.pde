@@ -127,7 +127,7 @@ void panel_1_check(){
     tf_city.setLookAndFeel(look_default);
     com_city.setLabel("");
   }
-  if(tf_geolat.getValue().length() == 0 || tf_geolon.getValue().length() == 0){
+  if(tf_geolat.getValue().length() == 0 || tf_geolon.getValue().length() == 0 || tf_geolat.getLookAndFeel() == look_yellow || tf_geolon.getLookAndFeel() == look_yellow){
     if(tf_address.getValue().length() == 0){
       tf_address.setLookAndFeel(look_red);
       com_address.setLabel("Please indicate the \nmeasurement address \nor GPS coordinates.");    
@@ -138,8 +138,8 @@ void panel_1_check(){
       com_address.setLabel("");
       try{
         processing.data.JSONObject geo = geocode(tf_address.getValue(), tf_city.getValue(), tf_country.getValue());
-        float geolat = geo.getJSONArray("results").getJSONObject(0).getJSONObject("geometry").getJSONObject("location").getFloat("lat");
-        float geolon = geo.getJSONArray("results").getJSONObject(0).getJSONObject("geometry").getJSONObject("location").getFloat("lng");
+        float geolat = geo.getJSONArray("results").getJSONObject(0).getJSONObject("geometry").getFloat("lat");
+        float geolon = geo.getJSONArray("results").getJSONObject(0).getJSONObject("geometry").getFloat("lng");
         tf_geolat.setValue(str(geolat));
         tf_geolat.setLookAndFeel(look_yellow);
         tf_geolon.setValue(str(geolon));
@@ -177,7 +177,7 @@ void panel_1_check(){
  */
 void geo_config(){
   try{
-    processing.data.JSONObject loc = get_loc2();
+    processing.data.JSONObject loc = get_loc();
     tf_country.setValue(loc.getString("country"));
     tf_country.setLookAndFeel(look_yellow);
     com_country.setLabel("This value was automatically \nset please verify it");
@@ -196,7 +196,7 @@ void geo_config(){
 /**
  * Locate the user's IP through the ip-api service.
  */
-processing.data.JSONObject get_loc2() {
+processing.data.JSONObject get_loc() {
   processing.data.JSONObject loc = new processing.data.JSONObject();
   try {
     String loc_api = "http://ip-api.com/json";
@@ -208,12 +208,12 @@ processing.data.JSONObject get_loc2() {
 }
 
 /**
- * Locate the user postal address through the Google Maps API.
+ * Locate the user postal address through the OpenCage service.
  */
 processing.data.JSONObject geocode(String address, String city, String country){
   processing.data.JSONObject geo = new processing.data.JSONObject();
-  address = URLEncoder.encode(address + " " + city + " " + country);
-  String geocode_api = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=" + GOOGLE_KEY;
+  address = URLEncoder.encode(address + ", " + city + ", " + country);
+  String geocode_api = "http://api.opencagedata.com/geocode/v1/json?query=" + address + "&key=" + OPENCAGE_KEY;
   try{
     geo = loadJSONObject(geocode_api);
   } catch (Exception e) {

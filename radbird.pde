@@ -13,7 +13,8 @@ boolean panel_2_checked = false;
 int current_panel = 0;
 
 /* Webservices */
-String GOOGLE_KEY = "";
+
+String OPENCAGE_KEY = "83325a178bf8fa5ac56db6996af6c7b5";
 
 final String OAUTH_CONSUMER_KEY        = ""; // Twitter consumer key
 final String OAUTH_CONSUMER_SECRET     = ""; // Twitter secret key
