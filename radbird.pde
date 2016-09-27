@@ -33,19 +33,10 @@ GUIController gui_control_conf;
 IFButton bt_config_file;
 
 /**
- * Main function. Configures the Twitter API, the GUI, retrieves geo coordinates, initializes the first GUI panel.
+ * Main function. Configures the GUI, retrieves geo coordinates, initializes the first GUI panel.
  */
 void setup(){
   size(400, 600);
-  
-  ConfigurationBuilder cb = new ConfigurationBuilder();
-  cb.setOAuthConsumerKey(OAUTH_CONSUMER_KEY);
-  cb.setOAuthConsumerSecret(OAUTH_CONSUMER_SECRET);
-  cb.setOAuthAccessToken(OAUTH_ACCESS_TOKEN);
-  cb.setOAuthAccessTokenSecret(OAUTH_ACCESS_TOKEN_SECRET);
-  TwitterFactory tf = new TwitterFactory(cb.build());
-  twitter = tf.getInstance();
-  
   gui_config();
   geo_config();
   gui_panel_1();

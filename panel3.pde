@@ -26,29 +26,32 @@ IFLabel lb_start_3;
 void gui_panel_3_config(){
   gui_control_3 = new GUIController(this);
   
-  lb_oauth_token = new IFLabel("Oauth token", 20, 85);
+  com_twitter = new IFLabel("To learn how to generate Twitter API tokens, visit\nhttps://dev.twitter.com/oauth/overview/\napplication-owner-access-tokens", 20, 30);
+  gui_control_3.add(com_twitter);
+  
+  lb_oauth_token = new IFLabel("Oauth token", 20, 90);
   gui_control_3.add(lb_oauth_token);
-  tf_oauth_token = new IFTextField("tf_oauth_token", 20, 100, 300);
-  tf_oauth_token.setValue(OAUTH_ACCESS_TOKEN);
+  tf_oauth_token = new IFTextField("tf_oauth_token", 20, 105, 360);
   gui_control_3.add(tf_oauth_token);
+  tf_oauth_token.setValue(OAUTH_ACCESS_TOKEN);
   
-  lb_oauth_secret = new IFLabel("Oauth secret", 20, 135);
+  lb_oauth_secret = new IFLabel("Oauth secret", 20, 140);
   gui_control_3.add(lb_oauth_secret);
-  tf_oauth_secret = new IFTextField("tf_oauth_secret", 20, 150, 300);
-  tf_oauth_secret.setValue(OAUTH_ACCESS_TOKEN_SECRET);
+  tf_oauth_secret = new IFTextField("tf_oauth_secret", 20, 155, 360);
   gui_control_3.add(tf_oauth_secret);
+  tf_oauth_secret.setValue(OAUTH_ACCESS_TOKEN_SECRET);
   
-  lb_api_key = new IFLabel("API key", 20, 185);
+  lb_api_key = new IFLabel("API key", 20, 190);
   gui_control_3.add(lb_api_key);
-  tf_api_key = new IFTextField("tf_api_key", 20, 200, 300);
-  tf_api_key.setValue(OAUTH_CONSUMER_KEY);
+  tf_api_key = new IFTextField("tf_api_key", 20, 205, 360);
   gui_control_3.add(tf_api_key);
+  tf_api_key.setValue(OAUTH_CONSUMER_KEY);
   
-  lb_api_secret = new IFLabel("API secret", 20, 235);
+  lb_api_secret = new IFLabel("API secret", 20, 240);
   gui_control_3.add(lb_api_secret);
-  tf_api_secret = new IFTextField("tf_api_secret", 20, 250, 300);
-  tf_api_secret.setValue(OAUTH_CONSUMER_SECRET);
+  tf_api_secret = new IFTextField("tf_api_secret", 20, 255, 360);
   gui_control_3.add(tf_api_secret);
+  tf_api_secret.setValue(OAUTH_CONSUMER_SECRET);
   
   bt_prev_3 = new IFButton("Back", 100, 300, 90);
   bt_prev_3.addActionListener(this);
@@ -57,7 +60,7 @@ void gui_panel_3_config(){
   bt_start_3.addActionListener(this);
   gui_control_3.add(bt_start_3);
   
-  lb_start_3 = new IFLabel("", 20, 320);
+  lb_start_3 = new IFLabel("", 20, 330);
   gui_control_3.add(lb_start_3);
 }
 
@@ -78,6 +81,13 @@ void gui_panel_3(){
  * Tests the Twitter API authentication
  */
 void twitter_test(){
+  ConfigurationBuilder cb = new ConfigurationBuilder();
+  cb.setOAuthConsumerKey(tf_api_key.getValue());
+  cb.setOAuthConsumerSecret(tf_api_secret.getValue());
+  cb.setOAuthAccessToken(tf_oauth_token.getValue());
+  cb.setOAuthAccessTokenSecret(tf_oauth_secret.getValue());
+  TwitterFactory tf = new TwitterFactory(cb.build());
+  twitter = tf.getInstance();
   try {    
     tw_user = twitter.verifyCredentials();
     gui_panel_4();
