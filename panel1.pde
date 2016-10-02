@@ -178,11 +178,12 @@ void panel_1_check() {
 }
 
 /**
- * Initializes the user location.
+ * Initializes the user location through the ip-api service.
  */
 void geo_config() {
   try {
-    processing.data.JSONObject loc = get_loc();
+    String loc_api = "http://ip-api.com/json";
+    processing.data.JSONObject loc = loadJSONObject(loc_api);
     tf_country.setValue(loc.getString("country"));
     tf_country.setLookAndFeel(look_yellow);
     com_country.setLabel("This value was automatically \nset please verify it");
@@ -196,21 +197,6 @@ void geo_config() {
     tf_city.setLookAndFeel(look_red);
     com_city.setLabel("This couldn't be automatically \nset. Please do it manually");
   }
-}
-
-/**
- * Locate the user's IP through the ip-api service.
- */
-processing.data.JSONObject get_loc() {
-  processing.data.JSONObject loc = new processing.data.JSONObject();
-  try {
-    String loc_api = "http://ip-api.com/json";
-    loc = loadJSONObject(loc_api);
-  } 
-  catch (Exception e) {
-    println("Could not fetch location");
-  }
-  return loc;
 }
 
 /**
