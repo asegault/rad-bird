@@ -175,6 +175,7 @@ void panel_1_check() {
     }
     lb_check_1.setLabel(o);
   }
+  config_file_save();
 }
 
 /**

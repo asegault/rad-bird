@@ -138,3 +138,27 @@ void config_file_load() {
     bt_config_file.setLabel("No config file found.");
   }
 }
+
+void config_file_save(){
+  if(rc_type.getSelected() == rc_type1){
+    conf.setString("type", "indoor");
+  }
+  else{
+    conf.setString("type", "outdoor");
+  }
+  conf.setString("country", tf_country.getValue());
+  conf.setString("city", tf_city.getValue());
+  conf.setString("address", tf_address.getValue());
+  conf.setString("geolat", tf_geolat.getValue());
+  conf.setString("geolon", tf_geolon.getValue());
+  conf.setString("environment", tf_environment.getValue());
+  conf.setString("tags", tf_tags.getValue());
+  conf.setString("device", tf_device.getValue());
+  conf.setString("duration", tf_duration.getValue());
+  conf.setString("frequency", tf_frequency.getValue());
+  conf.setString("twitter_oauth_token", tf_oauth_token.getValue());
+  conf.setString("twitter_oauth_secret", tf_oauth_secret.getValue());
+  conf.setString("twitter_api_key", tf_api_key.getValue());
+  conf.setString("twitter_api_secret", tf_api_secret.getValue());
+  saveJSONObject(conf, "data/perso.conf");
+}
