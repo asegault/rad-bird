@@ -41,14 +41,20 @@ void gui_panel_1_config(){
   gui_control_1.add(lb_type);
   rc_type = new IFRadioController("rc_type");
   rc_type1 = new IFRadioButton("Indoor", 20, 100, rc_type);
-  rc_type1.setSelected();
   rc_type2 = new IFRadioButton("Outdoor", 100, 100, rc_type);
+  if(conf.getString("type").equals("indoor")){
+    rc_type1.setSelected();
+  }
+  else{
+    rc_type2.setSelected();
+  }
   gui_control_1.add(rc_type1);
   gui_control_1.add(rc_type2);
   
   lb_country = new IFLabel("Country", 20, 135);
   gui_control_1.add(lb_country);
   tf_country = new IFTextField("tf_country", 20, 150, 200);
+  tf_country.setValue(conf.getString("country"));
   gui_control_1.add(tf_country);
   com_country = new IFLabel("", 230, 145);
   gui_control_1.add(com_country);
@@ -56,6 +62,7 @@ void gui_panel_1_config(){
   lb_city = new IFLabel("City", 20, 185);
   gui_control_1.add(lb_city);
   tf_city = new IFTextField("tf_city", 20, 200, 200);
+  tf_city.setValue(conf.getString("city"));
   gui_control_1.add(tf_city);
   com_city = new IFLabel("", 230, 195);
   gui_control_1.add(com_city);
@@ -63,6 +70,7 @@ void gui_panel_1_config(){
   lb_address = new IFLabel("Address", 20, 235);
   gui_control_1.add(lb_address);
   tf_address = new IFTextField("tf_address", 20, 250, 200);
+  tf_address.setValue(conf.getString("address"));
   gui_control_1.add(tf_address);
   com_address = new IFLabel("This will not be displayed \n but used to calculate GPS \ncoordinates. You can also \nset the GPS coordinates \ndirectly.", 230, 245);
   gui_control_1.add(com_address);
@@ -70,11 +78,13 @@ void gui_panel_1_config(){
   lb_geolat = new IFLabel("GPS Latitude", 20, 285);
   gui_control_1.add(lb_geolat);
   tf_geolat = new IFTextField("tf_geolat", 20, 300, 95);
+  tf_geolat.setValue(conf.getString("geolat"));
   gui_control_1.add(tf_geolat);
   
   lb_geolon = new IFLabel("GPS Longitude", 125, 285);
   gui_control_1.add(lb_geolon);
   tf_geolon = new IFTextField("tf_geolon", 125, 300, 95);
+  tf_geolon.setValue(conf.getString("geolon"));
   gui_control_1.add(tf_geolon);
   com_geo = new IFLabel("", 230, 295);
   gui_control_1.add(com_geo);

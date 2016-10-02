@@ -32,26 +32,26 @@ void gui_panel_3_config(){
   lb_oauth_token = new IFLabel("Oauth token", 20, 90);
   gui_control_3.add(lb_oauth_token);
   tf_oauth_token = new IFTextField("tf_oauth_token", 20, 105, 360);
+  tf_oauth_token.setValue(conf.getString("twitter_oauth_token"));
   gui_control_3.add(tf_oauth_token);
-  tf_oauth_token.setValue(OAUTH_ACCESS_TOKEN);
   
   lb_oauth_secret = new IFLabel("Oauth secret", 20, 140);
   gui_control_3.add(lb_oauth_secret);
   tf_oauth_secret = new IFTextField("tf_oauth_secret", 20, 155, 360);
+  tf_oauth_secret.setValue(conf.getString("twitter_oauth_secret"));
   gui_control_3.add(tf_oauth_secret);
-  tf_oauth_secret.setValue(OAUTH_ACCESS_TOKEN_SECRET);
   
   lb_api_key = new IFLabel("API key", 20, 190);
   gui_control_3.add(lb_api_key);
   tf_api_key = new IFTextField("tf_api_key", 20, 205, 360);
+  tf_api_key.setValue(conf.getString("twitter_api_key"));
   gui_control_3.add(tf_api_key);
-  tf_api_key.setValue(OAUTH_CONSUMER_KEY);
   
   lb_api_secret = new IFLabel("API secret", 20, 240);
   gui_control_3.add(lb_api_secret);
   tf_api_secret = new IFTextField("tf_api_secret", 20, 255, 360);
+  tf_api_secret.setValue(conf.getString("twitter_api_secret"));
   gui_control_3.add(tf_api_secret);
-  tf_api_secret.setValue(OAUTH_CONSUMER_SECRET);
   
   bt_prev_3 = new IFButton("Back", 100, 300, 90);
   bt_prev_3.addActionListener(this);

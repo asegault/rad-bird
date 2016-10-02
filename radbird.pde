@@ -11,15 +11,10 @@ IFLookAndFeel look_default, look_red, look_yellow, look_green, look_grey, look_t
 boolean panel_1_checked = false;
 boolean panel_2_checked = false;
 int current_panel = 0;
+processing.data.JSONObject conf; 
 
 /* Webservices */
-
 String OPENCAGE_KEY = "83325a178bf8fa5ac56db6996af6c7b5";
-
-final String OAUTH_CONSUMER_KEY        = ""; // Twitter consumer key
-final String OAUTH_CONSUMER_SECRET     = ""; // Twitter secret key
-final String OAUTH_ACCESS_TOKEN        = ""; // Twitter access token
-final String OAUTH_ACCESS_TOKEN_SECRET = ""; // Twitter secret access token
 Twitter twitter;
 User tw_user;
 
@@ -127,13 +122,28 @@ void gui_config(){
   
   /* GUI config : managing config files */
   gui_control_conf = new GUIController(this);
-  bt_config_file = new IFButton("No config file found.", 0, 0, width);
+  bt_config_file = new IFButton("Loading a config file ...", 0, 0, width);
   gui_control_conf.add(bt_config_file);
   bt_config_file.setLookAndFeel(look_tab_grey);
+  config_file_load();
   
   /* configuring GUI panels */
   gui_panel_1_config();
   gui_panel_2_config();
   gui_panel_3_config();
   gui_panel_4_config();
+}
+
+void config_file_load(){
+  if(loadJSONObject("perso.conf") != null){
+    conf = loadJSONObject("perso.conf");
+    bt_config_file.setLabel("Config loaded from perso.conf");
+  }
+  else if(loadJSONObject("default.conf") != null){
+    conf = loadJSONObject("default.conf");
+    bt_config_file.setLabel("Config loaded from default.conf");
+  }
+  else{
+    bt_config_file.setLabel("No config file found.");
+  }
 }

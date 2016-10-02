@@ -46,6 +46,7 @@ void gui_panel_2_config(){
   lb_environment = new IFLabel("Environment", 20, 90);
   gui_control_2.add(lb_environment);
   tf_environment = new IFTextField("tf_environment", 20, 105, 200);
+  tf_environment.setValue(conf.getString("environment"));
   gui_control_2.add(tf_environment);
   com_environment = new IFLabel("Description of the site\n(e.g. floor, walls)", 230, 100);
   gui_control_2.add(com_environment);
@@ -53,7 +54,7 @@ void gui_panel_2_config(){
   lb_tags = new IFLabel("Hashtags", 20, 135);
   gui_control_2.add(lb_tags);
   tf_tags = new IFTextField("tf_tags", 20, 150, 200);
-  tf_tags.setValue("#geiger");
+  tf_tags.setValue(conf.getString("tags"));
   gui_control_2.add(tf_tags);
   com_tags = new IFLabel("Tags that will be attached\nto the tweets.", 230, 145);
   gui_control_2.add(com_tags);
@@ -67,21 +68,21 @@ void gui_panel_2_config(){
   lb_device = new IFLabel("Device name", 20, 210);
   gui_control_2.add(lb_device);
   tf_device = new IFTextField("tf_device", 20, 225, 200);
-  tf_device.setValue("Pokega Type 5");
+  tf_device.setValue(conf.getString("device"));
   tf_device.setLookAndFeel(look_grey);
   gui_control_2.add(tf_device);
   
   lb_duration = new IFLabel("Duration", 20, 255);
   gui_control_2.add(lb_duration);
   tf_duration = new IFTextField("tf_duration", 20, 270, 200);
-  tf_duration.setValue("10 minutes");
+  tf_duration.setValue(conf.getString("duration"));
   tf_duration.setLookAndFeel(look_grey);
   gui_control_2.add(tf_duration);
   
   lb_frequency = new IFLabel("Frequency", 20, 300);
   gui_control_2.add(lb_frequency);
   tf_frequency = new IFTextField("tf_frequency", 20, 315, 200);
-  tf_frequency.setValue("60 minutes");
+  tf_frequency.setValue(conf.getString("frequency"));
   tf_frequency.setLookAndFeel(look_grey);
   gui_control_2.add(tf_frequency);
   
