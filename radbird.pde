@@ -127,6 +127,7 @@ void gui_config() {
   gui_panel_4_config();
 }
 
+/* Loading a config file if one exists */
 void config_file_load() {
   if (loadStrings("perso.conf") != null) {
     conf = loadJSONObject("perso.conf");
@@ -139,6 +140,7 @@ void config_file_load() {
   }
 }
 
+/* Retriveing values from the text-fields and saving to a file */
 void config_file_save(){
   if(rc_type.getSelected() == rc_type1){
     conf.setString("type", "indoor");
