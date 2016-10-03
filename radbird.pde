@@ -28,12 +28,11 @@ GUIController gui_control_conf;
 IFButton bt_config_file;
 
 /**
- * Main function. Configures the GUI, retrieves geo coordinates, initializes the first GUI panel.
+ * Main function. Configures the GUI and initializes the first GUI panel.
  */
 void setup() {
   size(400, 600);
   gui_config();
-  geo_config();
   gui_panel_1();
 }
 

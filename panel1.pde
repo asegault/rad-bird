@@ -33,6 +33,7 @@ IFButton bt_next_1;
 
 /**
  * Configures the GUI components of the first panel.
+ * Retrieves location if needed
  */
 void gui_panel_1_config() {
   gui_control_1 = new GUIController(this);
@@ -96,6 +97,10 @@ void gui_panel_1_config() {
 
   bt_next_1 = new IFButton("Next", 290, 380, 100);
   bt_next_1.addActionListener(this);
+  
+  if(tf_city.getValue().length() == 0 || tf_country.getValue().length() == 0){
+    geo_config();
+  }
 }
 
 /**
